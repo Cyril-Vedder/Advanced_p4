@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Cyril Vedder          Project 4 CIS 111         11/19/13 -->
+	<head>
+<link rel="stylesheet" href="../css/eightBallin.css">
+<!--the css was done in class with Professor Kiki-->
+		<title>Magic 8-Ball</title>
+		
+		<!-- This is the script to create my magic eight ball that provides a certain answer depending on what is asked. -->
+		<script>
+			
+
+			function eightBall() {
+				var question = document.getElementById("questionBox").value;
+				var images = ['answerYes.png', 'answerNo.png', 'answerAskLater.png', 'answerNotL.png', 'answerMaybe.png'];
+					//I got help on StackOverFlow for the '/^(text)/i' portion of this project. Originally I had specific 
+					//questions connected to each answer but I wanted to make each answer tied to a word and not an
+					//entire sentence.
+				if (question.search(/^(what)/i) > -1) {
+					var askLater = '../images/answerAskLater.png'
+					document.getElementById('eightTemplate').src = askLater;
+
+				} else if (question.search(/^(if)/i) > -1) {
+					var no = '../images/answerNo.png'
+					document.getElementById('eightTemplate').src = no;
+				} else if (question.search(/^(is)/i) > -1) {
+					var yes = '../images/answerYes.png'
+					document.getElementById('eightTemplate').src = yes;
+				} else if (question.search(/^(will)/i) > -1) {
+					var notLikely = '../images/answerNotL.png'
+					document.getElementById('eightTemplate').src = notLikely;
+				} else if (question.search(/^(can)/i) > -1) {
+					var maybe = '../images/answerMaybe.png'
+					document.getElementById('eightTemplate').src = maybe;
+				}
+
+			}
+
+
+		</script>
+	</head>
+
+	<body>
+		<!-- This part of the page will simulate a magic eight ball that will provide 5 answers.
+		When certain questions are asked, it will return the same answers. -->
+
+		<div style="text-align:center" class="midSection">
+			<h1>Magic 8-Ball Game</h1>
+			<img src="../images/answer.png" id="eightTemplate">
+			<br>
+			<input type="text" id="questionBox" value="Please ask a question">
+			<input type="button" value="Click for Magical Response" onclick='eightBall()'/>
+
+
+		</div>
+	</body>
+</html>
